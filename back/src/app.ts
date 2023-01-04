@@ -1,4 +1,5 @@
 import express, { Application, Router } from "express";
+import connectToMongo from "./infra/db/mongodb";
 
 class App {
   public app: Application
@@ -9,9 +10,8 @@ class App {
   }
 
   public startServer(PORT: string | number = 3001): void {
-    // criar função para conectar no banco de dados
+    connectToMongo()
     this.app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))
-    this.app.get("/", (req, res) => res.send("olá mundo!"))
   }
   public addRouter(router: Router) {
     this.app.use(router);
