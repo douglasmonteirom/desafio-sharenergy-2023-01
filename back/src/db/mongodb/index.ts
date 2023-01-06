@@ -7,6 +7,7 @@ class MongoDataBase implements DbConnection {
     this._connect()
   }
   _connect() {
+    mongoose.set("strictQuery", true);
     mongoose.connect('mongodb+srv://admin:admin@cluster0.rl23jqu.mongodb.net/teste-sharenergy')
       .then(() => {
         console.log('Database connection successful')
