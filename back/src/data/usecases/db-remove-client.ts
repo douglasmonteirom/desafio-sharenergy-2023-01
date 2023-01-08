@@ -3,7 +3,7 @@ import { RemoveClientRepository } from "../protocols/db/client/remove-client-rep
 
 export class DbRemoveClient implements RemoveClient {
   constructor(private readonly removeClientRepository: RemoveClientRepository) { }
-  async remove(data: RemoveClient.Params): Promise<void> {
-    await this.removeClientRepository.remove(data)
+  async remove(data: RemoveClient.Params): Promise<RemoveClient.Result> {
+    return await this.removeClientRepository.remove(data)
   }
 }

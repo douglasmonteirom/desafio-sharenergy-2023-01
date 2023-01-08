@@ -9,8 +9,8 @@ import Client from "./models/client";
 
 export class ClientsMongoRepository implements ReadAllClientsRepository, AddClientRepository, ReadOneClientRepository, RemoveClientRepository {
   constructor() { }
-  async remove(data: RemoveClient.Params): Promise<void> {
-    await Client.deleteOne({ __id: data.id })
+  async remove(data: RemoveClient.Params): Promise<RemoveClientRepository.Result> {
+    return await Client.findOneAndRemove({ _id: data.id })
   }
   async read(data: ReadOneClient.Params): Promise<ReadOneClientRepository.Result> {
     return await Client.findOne({ _id: data.id })
@@ -19,7 +19,7 @@ export class ClientsMongoRepository implements ReadAllClientsRepository, AddClie
     await Client.create(data)
   }
   async readAll(): Promise<ReadAllClientsRepository.Result> {
-    return Client.find()
+    return await Client.find()
   }
 
 }
