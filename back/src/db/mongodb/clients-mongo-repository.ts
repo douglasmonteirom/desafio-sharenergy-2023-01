@@ -12,7 +12,7 @@ import Client from "./models/client";
 export class ClientsMongoRepository implements ReadAllClientsRepository, AddClientRepository, ReadOneClientRepository, RemoveClientRepository, UpdateClientRepository {
   constructor() { }
   async update(data: UpdateClient.Params): Promise<UpdateClient.Result> {
-    return await Client.findOneAndUpdate({ _id: data.id }, { ...data.client })
+    return await Client.findOneAndUpdate({ _id: data.id }, { ...data })
   }
   async remove(data: RemoveClient.Params): Promise<RemoveClientRepository.Result> {
     return await Client.findOneAndRemove({ _id: data.id })

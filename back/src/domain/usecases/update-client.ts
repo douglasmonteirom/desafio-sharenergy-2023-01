@@ -1,4 +1,4 @@
-import { ClientModel } from "../models/client"
+import { ClientModel } from "../models/client";
 
 export interface UpdateClient {
   update(data: UpdateClient.Params): Promise<UpdateClient.Result>
@@ -6,8 +6,5 @@ export interface UpdateClient {
 
 export namespace UpdateClient {
   export type Result = ClientModel | null
-  export type Params = {
-    id: string,
-    client: ClientModel
-  }
+  export type Params = ClientModel
 }
