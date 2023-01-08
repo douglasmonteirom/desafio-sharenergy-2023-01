@@ -6,6 +6,6 @@ export interface ReadOneClientRepository {
 }
 
 export namespace ReadOneClientRepository {
-  export type Result = ClientModel
+  export type Result = ClientModel | null
   export type Params = ReadOneClient.Params
 }
