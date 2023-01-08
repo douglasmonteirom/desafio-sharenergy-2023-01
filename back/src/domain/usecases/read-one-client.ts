@@ -6,7 +6,7 @@ export interface ReadOneClient {
 }
 
 export namespace ReadOneClient {
-  export type Result = ClientModel
+  export type Result = ClientModel | null
   export type Params = {
     id: string
   }
