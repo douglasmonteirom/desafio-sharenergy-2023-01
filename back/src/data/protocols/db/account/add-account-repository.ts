@@ -1,7 +1,7 @@
 import { AddAccount } from "../../../../domain/usecases/add-account"
 
 export interface AddAccountRepositpry {
-  add: (data: AddAccountRepositpry.Params) => Promise<AddAccountRepositpry.Result>
+  add(data: AddAccountRepositpry.Params): Promise<AddAccountRepositpry.Result>
 }
 
 export namespace AddAccountRepositpry {
