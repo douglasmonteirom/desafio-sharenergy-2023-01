@@ -1,0 +1,14 @@
+import { InvalidParamError } from "../../presentation/errors/invalid-param-error";
+import { Validation } from "../../presentation/protocols/validation";
+
+export class CompareFieldsValidation implements Validation {
+  constructor(
+    private readonly fieldName: string,
+    private readonly fieldToCompareName: string
+  ) { }
+  validate(input: any): void | Error {
+    if (input[this.fieldName] !== input[this.fieldToCompareName]) {
+      return new InvalidParamError(this.fieldToCompareName)
+    }
+  }
+}
