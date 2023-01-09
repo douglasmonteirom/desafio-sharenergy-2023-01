@@ -4,5 +4,5 @@ import { AddAccount } from "../../../domain/usecases/add-account";
 
 export const makeDbAddAccount = (): AddAccount => {
   const accountMongoRepository = new AccountMongoRepository()
-  return new DbAddAccount(accountMongoRepository)
+  return new DbAddAccount(accountMongoRepository, accountMongoRepository)
 }
