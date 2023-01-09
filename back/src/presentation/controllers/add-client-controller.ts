@@ -1,13 +1,20 @@
 import { AddClient } from "../../domain/usecases/add-client";
-import { noContent, serverError } from "../helpers/http-helper";
+import { badRequest, noContent, serverError } from "../helpers/http-helper";
 import { Controller } from "../protocols/controller";
 import { HttpResponse } from "../protocols/http-response";
+import { Validation } from "../protocols/validation";
 
 export class AddClientController implements Controller {
-  constructor(private readonly addClient: AddClient) { }
+  constructor(
+    private readonly addClient: AddClient,
+    private readonly validation: Validation
+  ) { }
   async handle(request: AddClientController.Request): Promise<HttpResponse> {
     try {
-      // implementar validações no request
+      const error = this.validation.validate(request)
+      if (error) {
+        return badRequest(error)
+      }
       await this.addClient.add(request)
       return noContent()
 
