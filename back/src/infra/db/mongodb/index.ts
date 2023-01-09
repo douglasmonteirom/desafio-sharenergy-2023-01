@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { DbConnection } from "../../../data/protocols/db/db-connection";
+import env from "../../../main/config/env";
 
 
 class MongoDataBase implements DbConnection {
@@ -8,7 +9,7 @@ class MongoDataBase implements DbConnection {
   }
   _connect() {
     mongoose.set("strictQuery", true);
-    mongoose.connect('mongodb+srv://admin:admin@cluster0.rl23jqu.mongodb.net/teste-sharenergy')
+    mongoose.connect(env.mongoUrl)
       .then(() => {
         console.log('Database connection successful')
       })
