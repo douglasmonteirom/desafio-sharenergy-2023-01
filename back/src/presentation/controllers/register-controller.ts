@@ -1,4 +1,5 @@
 import { AddAccount } from "../../domain/usecases/add-account";
+import { Authentication } from "../../domain/usecases/authentication";
 import { EmailInUseError } from "../errors/email-in-use-error";
 import { badRequest, forbidden, ok, serverError } from "../helpers/http-helper";
 import { Controller } from "../protocols/controller";
@@ -8,7 +9,8 @@ import { Validation } from "../protocols/validation";
 export class RegisterController implements Controller {
   constructor(
     private readonly addAccount: AddAccount,
-    private readonly validation: Validation
+    private readonly validation: Validation,
+    private readonly authentication: Authentication
   ) { }
   async handle(request: RegisterController.Request): Promise<HttpResponse> {
     try {
@@ -25,9 +27,11 @@ export class RegisterController implements Controller {
       if (!isValid) {
         return forbidden(new EmailInUseError())
       }
-      // criar autenticação
-      return ok({ name, email }) // alterar para retornar token
+      const authenticationResult = await this.authentication.auth({ email, password })
+
+      return ok(authenticationResult)
     } catch (error) {
+      console.log(error)
       return serverError()
     }
   }
