@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DbConnection } from "../../data/protocols/db/db-connection";
+import { DbConnection } from "../../../data/protocols/db/db-connection";
 
 
 class MongoDataBase implements DbConnection {

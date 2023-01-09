@@ -1,4 +1,4 @@
-import { MongoDataBase } from "../db/mongodb";
+import { MongoDataBase } from "../infra/db/mongodb";
 
 (async function () {
   new MongoDataBase()
