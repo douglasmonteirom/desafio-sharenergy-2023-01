@@ -1,12 +1,13 @@
-import { AddClientRepository } from "../../data/protocols/db/client/add-client-repository";
-import { ReadAllClientsRepository } from "../../data/protocols/db/client/read-all-clients-repository";
-import { ReadOneClientRepository } from "../../data/protocols/db/client/read-one-client-repository";
-import { RemoveClientRepository } from "../../data/protocols/db/client/remove-client-repository";
-import { UpdateClientRepository } from "../../data/protocols/db/client/update-client-repository";
-import { AddClient } from "../../domain/usecases/add-client";
-import { ReadOneClient } from "../../domain/usecases/read-one-client";
-import { RemoveClient } from "../../domain/usecases/remove-client";
-import { UpdateClient } from "../../domain/usecases/update-client";
+
+import { AddClientRepository } from "../../../data/protocols/db/client/add-client-repository";
+import { ReadAllClientsRepository } from "../../../data/protocols/db/client/read-all-clients-repository";
+import { ReadOneClientRepository } from "../../../data/protocols/db/client/read-one-client-repository";
+import { RemoveClientRepository } from "../../../data/protocols/db/client/remove-client-repository";
+import { UpdateClientRepository } from "../../../data/protocols/db/client/update-client-repository";
+import { AddClient } from "../../../domain/usecases/add-client";
+import { ReadOneClient } from "../../../domain/usecases/read-one-client";
+import { RemoveClient } from "../../../domain/usecases/remove-client";
+import { UpdateClient } from "../../../domain/usecases/update-client";
 import Client from "./models/client";
 
 export class ClientsMongoRepository implements ReadAllClientsRepository, AddClientRepository, ReadOneClientRepository, RemoveClientRepository, UpdateClientRepository {
