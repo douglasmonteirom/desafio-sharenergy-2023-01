@@ -31,7 +31,6 @@ export class RegisterController implements Controller {
 
       return ok(authenticationResult)
     } catch (error) {
-      console.log(error)
       return serverError()
     }
   }
