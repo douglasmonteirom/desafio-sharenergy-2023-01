@@ -1,5 +1,8 @@
 import { RegisterController } from "../../../presentation/controllers/register-controller";
 import { Controller } from "../../../presentation/protocols/controller";
 import { makeDbAddAccount } from "../usecases/add-account-factory";
+import { makeRegisterValidation } from "./register-validation-factory";
 
-export const makeRegisterController = (): Controller => new RegisterController(makeDbAddAccount())
+export const makeRegisterController = (): Controller => {
+  return new RegisterController(makeDbAddAccount(), makeRegisterValidation())
+}
